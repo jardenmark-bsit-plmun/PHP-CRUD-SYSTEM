@@ -4,7 +4,12 @@ session_start();
 if (!isset($_SESSION['users'])) {
     $_SESSION['users'] = [
         ['id' => 1, 'student_number' => '24174771', 'name' => 'Mark Jarden', 'section' => 'IT3K'],
-        ['id' => 2, 'student_number' => '24174972', 'name' => 'Venice Canlas', 'section' => 'IT3K']
+        ['id' => 2, 'student_number' => '24174972', 'name' => 'Venice Canlas', 'section' => 'IT3K'],
+        ['id' => 3, 'student_number' => '24174911', 'name' => 'Jerwin Esparza', 'section' => 'IT3K'],
+        ['id' => 4, 'student_number' => '24174757', 'name' => 'Christine Espiritu', 'section' => 'IT3K'],
+        ['id' => 5, 'student_number' => '24174661', 'name' => 'Eduard Bagangan', 'section' => 'IT3K'],
+        ['id' => 6, 'student_number' => '24174973', 'name' => 'Elmer Cornelio', 'section' => 'IT3K'],
+        ['id' => 7, 'student_number' => '24174770', 'name' => 'Bloom Diaz', 'section' => 'IT3K']
     ];
 }
 
@@ -190,7 +195,7 @@ if (isset($_GET['action'])) {
     let actionHistory = [];
 
     function loadUsers() {
-        fetch('index.php?action=get_users')
+        fetch('?action=get_users')
             .then(response => response.json())
             .then(data => {
                 allUsers = data;
@@ -294,7 +299,7 @@ if (isset($_GET['action'])) {
         formData.append('name', name);
         formData.append('section', section);
 
-        fetch(`index.php?action=${id ? 'update_user' : 'add_user'}`, {
+        fetch(`?action=${id ? 'update_user' : 'add_user'}`, {
             method: 'POST',
             body: formData
         })
@@ -337,7 +342,7 @@ if (isset($_GET['action'])) {
         const formData = new URLSearchParams();
         formData.append('id', id);
 
-        fetch('index.php?action=delete_user', {
+        fetch('?action=delete_user', {
             method: 'POST',
             body: formData
         })
@@ -358,3 +363,4 @@ if (isset($_GET['action'])) {
 
 </body>
 </html>
+
